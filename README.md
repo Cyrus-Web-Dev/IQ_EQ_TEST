@@ -1,4 +1,4 @@
-# Tes IQ & EQ v2
+# Tes IQ & EQ v1
 
 Rombak total dari `tes-iq-eq-app`: **tanpa Gemini, tanpa backend, 100% offline**.
 Satu UI Expo (React Native + TypeScript) untuk Android/iOS, dan versi web-nya dibungkus Electron untuk Windows.
