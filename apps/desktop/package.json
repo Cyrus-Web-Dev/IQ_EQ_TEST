@@ -1,0 +1,39 @@
+{
+  "name": "@tesiqeq/desktop",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Tes IQ & EQ untuk Windows (Electron membungkus build web Expo)",
+  "author": "Tes IQ & EQ",
+  "main": "main.js",
+  "scripts": {
+    "prepare:web": "node scripts/copy-web.mjs",
+    "start": "electron .",
+    "test": "node --test test/*.test.js",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder --win"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.example.tesiqeq",
+    "productName": "Tes IQ & EQ",
+    "directories": { "output": "release", "buildResources": "build" },
+    "files": ["main.js", "lib/**/*", "web/**/*", "build/icon.png", "package.json"],
+    "win": {
+      "icon": "build/icon.png",
+      "target": [
+        { "target": "nsis", "arch": ["x64"] },
+        { "target": "portable", "arch": ["x64"] }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false,
+      "artifactName": "TesIQEQ-Setup-${version}.${ext}"
+    },
+    "portable": { "artifactName": "TesIQEQ-Portable-${version}.${ext}" }
+  }
+}

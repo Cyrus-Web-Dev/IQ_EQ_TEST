@@ -1,0 +1,37 @@
+{
+  "name": "tes-iq-eq-v2",
+  "private": true,
+  "version": "2.0.0",
+  "description": "Tes IQ & EQ — satu codebase Expo (React Native + TypeScript) untuk Android, iOS, dan Windows (web dibungkus Electron). 100% offline, tanpa API.",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "gen:iq": "node scripts/gen/build-iq.mjs",
+    "gen:eq": "node scripts/gen/build-eq.mjs",
+    "gen": "npm run gen:iq && npm run gen:eq",
+    "validate": "tsx scripts/validate.ts",
+    "test": "tsx --test packages/core/test/*.test.ts",
+    "typecheck": "tsc -p packages/core/tsconfig.json --noEmit",
+    "test:desktop": "npm test -w @tesiqeq/desktop",
+    "test:all": "npm test && npm run test:desktop && npm run validate",
+    "desktop:dev": "node scripts/build-web.mjs && npm run prepare:web -w @tesiqeq/desktop && npm start -w @tesiqeq/desktop",
+    "desktop:build": "node scripts/build-web.mjs && npm run prepare:web -w @tesiqeq/desktop && npm run dist -w @tesiqeq/desktop",
+    "app:setup": "npm install && npm run app:deps",
+    "app:deps": "cd apps/app && npx expo install react react-dom react-native expo-router expo-status-bar expo-linking expo-constants react-native-screens react-native-safe-area-context react-native-web @expo/metro-runtime @react-native-async-storage/async-storage",
+    "app": "npm start -w @tesiqeq/app",
+    "app:web": "npm run web -w @tesiqeq/app",
+    "app:android": "npm run android -w @tesiqeq/app",
+    "app:export": "node scripts/build-web.mjs",
+    "android:apk": "cd apps/app && npx eas-cli build -p android --profile preview"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.4",
+    "@types/node": "^20.14.0"
+  },
+  "engines": {
+    "node": ">=20.19.4"
+  }
+}

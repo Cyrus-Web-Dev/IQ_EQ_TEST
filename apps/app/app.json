@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "name": "Tes IQ & EQ",
+    "slug": "tes-iq-eq",
+    "version": "2.0.0",
+    "scheme": "tesiqeq",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "ios": { "supportsTablet": true, "bundleIdentifier": "com.example.tesiqeq" },
+    "android": {
+      "package": "com.example.tesiqeq",
+      "adaptiveIcon": { "foregroundImage": "./assets/adaptive-icon.png", "backgroundColor": "#1e3a8a" }
+    },
+    "web": { "bundler": "metro", "output": "single", "favicon": "./assets/favicon.png" },
+    "plugins": ["expo-router"]
+  }
+}
